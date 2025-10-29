@@ -13,7 +13,7 @@ import java.io.BufferedReader;
  *
  * @author Daniela
  */
-public class Grafo {
+public class Inicio {
 
     /**
      * @param args the command line arguments
