@@ -28,6 +28,8 @@ public class Inicio {
         // TODO code application logic here
         
         String lastcontent = null;
+        String[] ArrayUsers = {};
+        String[][] ArrayRels = {};
         
         if(appfile.exists())
         {
@@ -40,6 +42,11 @@ public class Inicio {
             
         }
 
+        ArrayUsers = getUsers(lastcontent);
+        //System.out.println(Arrays.deepToString(ArrayUsers));
+        //ArrayRels = getRelationships(lastcontent);
+        //System.out.println(Arrays.deepToString(ArrayRels));
+        
         principal f = new principal();
         f.setVisible(true);
         f.txtusr.setText(lastcontent);
@@ -99,24 +106,31 @@ public class Inicio {
         return newcontent;
     }
     
-    public static String[] getUser(String lastContent)
+    public static String[] getUsers(String lastContent)
     {
         String[] info = lastContent.toLowerCase().split("relaciones");
         String val = info[0].replace("usuarios\r\n", "");
         String[] tmp_users = val.split("\r\n");
         String[] users = {};
+        
         for(int i=0;i<tmp_users.length; i++)
         {
             tmp_users[i] = tmp_users[i].trim();
-            if(tmp_users[i].substring(0, 1) == "@")
+            if("@".equals(tmp_users[i].substring(0, 1)))
             {
-                users[users.length]=tmp_users[i];
+                String[] adduser = new String[users.length+1];
+                for(int j=0; j<users.length; j++)
+                {
+                    adduser[j] = users[j];
+                }
+                adduser[adduser.length-1]=tmp_users[i];
+                users = adduser;
             }
         }
         return users;
     }
     
-    public static String[][] getRelationShips(String lastContent)
+    public static String[][] getRelationships(String lastContent)
     {
         String[][] rels = {};
         if(lastContent.contains("relaciones"))
