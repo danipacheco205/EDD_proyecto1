@@ -47,13 +47,10 @@ public class principal extends javax.swing.JFrame {
         bsalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnsave = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        adduser = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtrel = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtusr = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -101,8 +98,13 @@ public class principal extends javax.swing.JFrame {
         });
         jPanel1.add(btnsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, 80, 30));
 
-        jButton1.setText("Agregar usuario");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, -1, -1));
+        adduser.setText("Agregar usuario");
+        adduser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adduserActionPerformed(evt);
+            }
+        });
+        jPanel1.add(adduser, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, -1, -1));
 
         jButton2.setText("Eliminar usuario");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -112,25 +114,13 @@ public class principal extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, -1, -1));
 
-        txtrel.setEditable(false);
-        txtrel.setBackground(new java.awt.Color(255, 255, 255));
-        txtrel.setColumns(20);
-        txtrel.setRows(5);
-        jScrollPane2.setViewportView(txtrel);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 380, 130));
-
         txtusr.setEditable(false);
         txtusr.setBackground(new java.awt.Color(255, 255, 255));
         txtusr.setColumns(20);
         txtusr.setRows(5);
         jScrollPane3.setViewportView(txtusr);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 380, 130));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Relaciones");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 380, 340));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Usuarios");
@@ -140,7 +130,7 @@ public class principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,6 +138,7 @@ public class principal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void bsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsalirActionPerformed
@@ -194,6 +185,16 @@ public class principal extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void adduserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adduserActionPerformed
+        // TODO add your handling code here:
+        dlguser aguser = new dlguser(this, true);
+        aguser.setVisible(true);
+        if (aguser.val == false)
+        {
+            JOptionPane.showMessageDialog(null, "Recuerde guardar para mantener los cambios en la memoria", "RECORDATORIO", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_adduserActionPerformed
     
     /**
      * @param args the command line arguments
@@ -221,20 +222,17 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton adduser;
     private javax.swing.JButton bsalir;
-    private javax.swing.JButton btnsave;
+    public javax.swing.JButton btnsave;
     private javax.swing.JButton bttcargar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblarchivosel;
-    public javax.swing.JTextArea txtrel;
     public javax.swing.JTextArea txtusr;
     // End of variables declaration//GEN-END:variables
 }

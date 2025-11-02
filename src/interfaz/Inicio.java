@@ -23,13 +23,14 @@ public class Inicio {
      */
     public static String strappfile = System.getProperty("java.io.tmpdir") + "grafo.txt";
     public static File appfile = new File(strappfile);
+    public static Nodo objUsers = new Nodo();
+    public static String[][] ArrayRels = {};
+    public static principal f = new principal();
     
     public static void main(String[] args) {
         // TODO code application logic here
         
         String lastcontent = null;
-        String[] ArrayUsers = {};
-        String[][] ArrayRels = {};
         
         if(appfile.exists())
         {
@@ -42,12 +43,11 @@ public class Inicio {
             
         }
 
-        ArrayUsers = getUsers(lastcontent);
-        //System.out.println(Arrays.deepToString(ArrayUsers));
-        //ArrayRels = getRelationships(lastcontent);
+        getUsers(lastcontent);
+        System.out.println(Arrays.deepToString(objUsers.users));
+        ArrayRels = getRelationships(lastcontent);
         //System.out.println(Arrays.deepToString(ArrayRels));
         
-        principal f = new principal();
         f.setVisible(true);
         f.txtusr.setText(lastcontent);
     }
@@ -106,33 +106,29 @@ public class Inicio {
         return newcontent;
     }
     
-    public static String[] getUsers(String lastContent)
+    public static void getUsers(String lastContent)
     {
         String[] info = lastContent.toLowerCase().split("relaciones");
         String val = info[0].replace("usuarios\r\n", "");
         String[] tmp_users = val.split("\r\n");
-        String[] users = {};
         
         for(int i=0;i<tmp_users.length; i++)
         {
             tmp_users[i] = tmp_users[i].trim();
-            if("@".equals(tmp_users[i].substring(0, 1)))
+            if(tmp_users[i].length()>0)
             {
-                String[] adduser = new String[users.length+1];
-                for(int j=0; j<users.length; j++)
+                if("@".equals(tmp_users[i].substring(0, 1)))
                 {
-                    adduser[j] = users[j];
+                    objUsers.addusers(tmp_users[i]);
                 }
-                adduser[adduser.length-1]=tmp_users[i];
-                users = adduser;
             }
         }
-        return users;
     }
     
     public static String[][] getRelationships(String lastContent)
     {
         String[][] rels = {};
+        int maxColumns = 0;
         if(lastContent.contains("relaciones"))
         {
             String[] info = lastContent.toLowerCase().split("relaciones");
@@ -140,25 +136,60 @@ public class Inicio {
             for(int i=0;i<tmp_rels.length; i++)
             {
                 tmp_rels[i] = tmp_rels[i].trim();
-                if(tmp_rels[i].substring(0, 1) == "@")
+                if(tmp_rels[i].length()>0)
                 {
-                    String[] val = tmp_rels[i].split(",");
-                    String[] val_res = {};
-                    val_res[0] = val[0];
-                    for(int j=1;j<val.length;j++)
+                    if("@".equals(tmp_rels[i].substring(0, 1)))
                     {
-                        val[j] = val[j].trim();
-                        if(val[j].substring(0, 1) == "@")
+                        String[] val = tmp_rels[i].split(",");
+                        int Columns = 1;
+                        for(int j=1;j<val.length;j++)
                         {
-                            val_res[val_res.length] = val[j];
+                            val[j] = val[j].trim();
+                            if("@".equals(val[j].substring(0, 1))) Columns++; 
                         }
+                        if(Columns > maxColumns) maxColumns = Columns;
+                        String[] val_res = new String[Columns];
+                        val_res[0] = val[0];
+                        int indxColumn = 0;
+                        for(int j=1;j<val.length;j++)
+                        {
+                            val[j] = val[j].trim();
+                            if("@".equals(val[j].substring(0, 1)))
+                            {
+                                indxColumn++;
+                                val_res[indxColumn] = val[j]; 
+                            }
+                        }
+                        String[][] addrels = new String[rels.length+1][maxColumns];
+                        for(int j=0; j<rels.length; j++)
+                        {
+                            addrels[j] = rels[j];
+                        }
+                        for(int j=0; j< val_res.length; j++)
+                        {
+                            addrels[addrels.length-1][j] = val_res[j];
+                        }
+                        rels = addrels;
                     }
-                    rels[rels.length]= val_res;       
                 }
             }
         }
         return rels;
     }
     
+    public static String refreshtext()
+    {
+        String texto = "usuarios\r\n";
+        for(int i=0; i<objUsers.users.length; i++)
+        {
+            texto += objUsers.users[i] + "\r\n";
+        }
+        texto += "relaciones";
+        for(int i = 0; i<ArrayRels.length; i++)
+        {
+            texto += ArrayRels[i] + "\r\n";
+        }
+        return texto;
+    }
     
 }
