@@ -9,70 +9,37 @@ package interfaz;
  *
  * @author Daniela
  */
-public class Aristas { ///relaciones entre usuarios
+public class Aristas  ///relaciones entre usuarios
+{ 
+    public String[][] relations;
 
-        private String usercontent;
-        private String relacontent;
-
-    public Aristas() {
-        this.usercontent = "";
-    }
-    
-    public static String[][] getRelationships(String lastContent)
+    public Aristas() 
     {
-        String[][] rels = {};
-        int maxColumns = 0;
-        if(lastContent.contains("relaciones"))
+        this.relations = new String[0][2];
+    }
+    public void addrelations (String user, String newrel)
+    {
+        String[][] addrel = new String[this.relations.length + 1][2];
+        for(int i=0; i<this.relations.length; i++)
         {
-            String[] info = lastContent.toLowerCase().split("relaciones");
-            String[] tmp_rels = info[1].split("\r\n");
-            for(int i=0;i<tmp_rels.length; i++)
+            addrel[i] = this.relations[i];
+        }
+        addrel[addrel.length - 1][0]=user;
+        addrel[addrel.length - 1][1]=newrel;
+        this.relations = addrel;
+    }    
+    
+    public boolean relexist(String user, String rel)
+    {
+        String[][] allrels = new String[this.relations.length][2];
+        for(int i = 0; i<this.relations.length; i++)
+        {
+            allrels[i] = this.relations[i];
+            if(allrels[i][0].equals(user) && allrels[i][1].equals(rel))
             {
-                tmp_rels[i] = tmp_rels[i].trim();
-                if(tmp_rels[i].length()>0)
-                {
-                    if("@".equals(tmp_rels[i].substring(0, 1)))
-                    {
-                        String[] val = tmp_rels[i].split(",");
-                        int Columns = 1;
-                        for(int j=1;j<val.length;j++)
-                        {
-                            val[j] = val[j].trim();
-                            if("@".equals(val[j].substring(0, 1))) Columns++; 
-                        }
-                        if(Columns > maxColumns) maxColumns = Columns;
-                        String[] val_res = new String[Columns];
-                        val_res[0] = val[0];
-                        int indxColumn = 0;
-                        for(int j=1;j<val.length;j++)
-                        {
-                            val[j] = val[j].trim();
-                            if("@".equals(val[j].substring(0, 1)))
-                            {
-                                indxColumn++;
-                                val_res[indxColumn] = val[j]; 
-                            }
-                        }
-                        String[][] addrels = new String[rels.length+1][maxColumns];
-                        for(int j=0; j<rels.length; j++)
-                        {
-                            addrels[j] = rels[j];
-                        }
-                        for(int j=0; j< val_res.length; j++)
-                        {
-                            addrels[addrels.length-1][j] = val_res[j];
-                        }
-                        rels = addrels;
-                    }
-                }
+                return true;
             }
         }
-        return rels;
+        return false;
     }
-    
-    
-
-        
-        
-        
 }

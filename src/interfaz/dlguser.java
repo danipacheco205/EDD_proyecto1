@@ -45,11 +45,21 @@ public class dlguser extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
+        jPanel1.setMaximumSize(new java.awt.Dimension(402, 204));
+        jPanel1.setMinimumSize(new java.awt.Dimension(402, 204));
+        jPanel1.setName(""); // NOI18N
+        jPanel1.setPreferredSize(new java.awt.Dimension(402, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel1.setText("Agregar nuevo usuario");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
+
+        dlgtext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dlgtextActionPerformed(evt);
+            }
+        });
         jPanel1.add(dlgtext, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 360, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -90,11 +100,11 @@ public class dlguser extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -112,12 +122,20 @@ public class dlguser extends javax.swing.JDialog {
         {
             if ("@".equals(username.substring(0,1)))
             {
-                Inicio.objUsers.addusers(username);
-                String s = Inicio.refreshtext();
-                JOptionPane.showMessageDialog(null, "El usuario ha sido agregado exitosamente", "AGREGADO", JOptionPane.INFORMATION_MESSAGE);
-                Inicio.f.txtusr.setText(s);
-                Inicio.f.btnsave.setEnabled(true);
-                this.dispose();
+                if (Inicio.objUsers.userexists(username)== false)
+                {
+                    Inicio.objUsers.addusers(username);
+                    String s = Inicio.refreshtext();
+                    JOptionPane.showMessageDialog(null, "El usuario ha sido agregado exitosamente", "AGREGADO", JOptionPane.INFORMATION_MESSAGE);
+                    Inicio.f.txtusr.setText(s);
+                    Inicio.f.btnsave.setEnabled(true);
+                    this.val = true;
+                    this.dispose();
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "No debes agregar un usuario ya existente", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
             }
             else
             {
@@ -131,6 +149,10 @@ public class dlguser extends javax.swing.JDialog {
         val = true;
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void dlgtextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgtextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dlgtextActionPerformed
 
     /**
      * @param args the command line arguments

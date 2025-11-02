@@ -8,8 +8,8 @@ package interfaz;
  *
  * @author Daniela
  */
-public class Nodo 
-{  ///Usuarios
+public class Nodo ///Usuarios
+{  
     
     public String[] users;
 
@@ -27,5 +27,19 @@ public class Nodo
         }
         adduser[adduser.length - 1]=newuser;
         this.users = adduser;
+    }
+    
+    public boolean userexists(String user)
+    {
+      String[] allusers = new String[this.users.length];
+        for(int i=0; i<this.users.length; i++)
+        {
+            allusers[i] = this.users[i];
+            if (allusers[i].equals(user))
+            {
+                return true;
+            }
+        }  
+        return false;
     }
 }

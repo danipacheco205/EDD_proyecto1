@@ -11,7 +11,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.BufferedReader;
-import java.util.Arrays;
 
 /**
  * @author Daniela
@@ -24,7 +23,7 @@ public class Inicio {
     public static String strappfile = System.getProperty("java.io.tmpdir") + "grafo.txt";
     public static File appfile = new File(strappfile);
     public static Nodo objUsers = new Nodo();
-    public static String[][] ArrayRels = {};
+    public static Aristas objRels = new Aristas();
     public static principal f = new principal();
     
     public static void main(String[] args) {
@@ -44,9 +43,7 @@ public class Inicio {
         }
 
         getUsers(lastcontent);
-        System.out.println(Arrays.deepToString(objUsers.users));
-        ArrayRels = getRelationships(lastcontent);
-        //System.out.println(Arrays.deepToString(ArrayRels));
+        getRelationships(lastcontent);
         
         f.setVisible(true);
         f.txtusr.setText(lastcontent);
@@ -125,10 +122,9 @@ public class Inicio {
         }
     }
     
-    public static String[][] getRelationships(String lastContent)
+    public static void getRelationships(String lastContent)
     {
         String[][] rels = {};
-        int maxColumns = 0;
         if(lastContent.contains("relaciones"))
         {
             String[] info = lastContent.toLowerCase().split("relaciones");
@@ -141,40 +137,18 @@ public class Inicio {
                     if("@".equals(tmp_rels[i].substring(0, 1)))
                     {
                         String[] val = tmp_rels[i].split(",");
-                        int Columns = 1;
-                        for(int j=1;j<val.length;j++)
+                        String[] val_res = new String[2];
+                        if(val.length == 2)
                         {
-                            val[j] = val[j].trim();
-                            if("@".equals(val[j].substring(0, 1))) Columns++; 
-                        }
-                        if(Columns > maxColumns) maxColumns = Columns;
-                        String[] val_res = new String[Columns];
-                        val_res[0] = val[0];
-                        int indxColumn = 0;
-                        for(int j=1;j<val.length;j++)
-                        {
-                            val[j] = val[j].trim();
-                            if("@".equals(val[j].substring(0, 1)))
+                            if("@".equals(val[1].trim().substring(0, 1)))
                             {
-                                indxColumn++;
-                                val_res[indxColumn] = val[j]; 
+                                objRels.addrelations(val[0].trim(), val[1].trim());
                             }
                         }
-                        String[][] addrels = new String[rels.length+1][maxColumns];
-                        for(int j=0; j<rels.length; j++)
-                        {
-                            addrels[j] = rels[j];
-                        }
-                        for(int j=0; j< val_res.length; j++)
-                        {
-                            addrels[addrels.length-1][j] = val_res[j];
-                        }
-                        rels = addrels;
                     }
                 }
             }
         }
-        return rels;
     }
     
     public static String refreshtext()
@@ -184,10 +158,10 @@ public class Inicio {
         {
             texto += objUsers.users[i] + "\r\n";
         }
-        texto += "relaciones";
-        for(int i = 0; i<ArrayRels.length; i++)
+        texto += "relaciones" + "\r\n";
+        for(int i = 0; i<objRels.relations.length; i++)
         {
-            texto += ArrayRels[i] + "\r\n";
+            texto += objRels.relations[i][0]+","+objRels.relations[i][1]+"\r\n";
         }
         return texto;
     }

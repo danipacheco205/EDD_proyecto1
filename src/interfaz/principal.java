@@ -52,6 +52,10 @@ public class principal extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         txtusr = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtrel = new javax.swing.JTextArea();
+        addrel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -120,11 +124,31 @@ public class principal extends javax.swing.JFrame {
         txtusr.setRows(5);
         jScrollPane3.setViewportView(txtusr);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 380, 340));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 380, 160));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Usuarios");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+        jLabel4.setText("Relaciones");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setText("Usuarios");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+
+        txtrel.setEditable(false);
+        txtrel.setBackground(new java.awt.Color(255, 255, 255));
+        txtrel.setColumns(20);
+        txtrel.setRows(5);
+        jScrollPane4.setViewportView(txtrel);
+
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 380, 160));
+
+        addrel.setText("Agregar relacción");
+        addrel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addrelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(addrel, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,8 +187,6 @@ public class principal extends javax.swing.JFrame {
             txtusr.setText(lastcontent);
             JOptionPane.showMessageDialog(null, "Recuerde guardar para mantener los cambios en la memoria", "RECORDATORIO",JOptionPane.INFORMATION_MESSAGE);
             btnsave.setEnabled(true);
-            ///Boolean val = Grafo.WriteContent(lastcontent, Grafo.appfile);
-            
 	}
     }//GEN-LAST:event_bttcargarActionPerformed
 
@@ -179,7 +201,6 @@ public class principal extends javax.swing.JFrame {
         { 
           JOptionPane.showMessageDialog(null, "Error al guardar el archivo", "ERROR",JOptionPane.ERROR_MESSAGE);  
         }
-
     }//GEN-LAST:event_btnsaveActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -190,11 +211,15 @@ public class principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         dlguser aguser = new dlguser(this, true);
         aguser.setVisible(true);
-        if (aguser.val == false)
+        if (aguser.val == true)
         {
             JOptionPane.showMessageDialog(null, "Recuerde guardar para mantener los cambios en la memoria", "RECORDATORIO", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_adduserActionPerformed
+
+    private void addrelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addrelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addrelActionPerformed
     
     /**
      * @param args the command line arguments
@@ -222,6 +247,7 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addrel;
     private javax.swing.JButton adduser;
     private javax.swing.JButton bsalir;
     public javax.swing.JButton btnsave;
@@ -230,9 +256,12 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lblarchivosel;
+    public javax.swing.JTextArea txtrel;
     public javax.swing.JTextArea txtusr;
     // End of variables declaration//GEN-END:variables
 }
