@@ -7,6 +7,8 @@ package interfaz;
 /**
  * Importa las librerías
 */
+import static interfaz.Inicio.getRelationships;
+import static interfaz.Inicio.getUsers;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JFileChooser;
 import java.io.File;
@@ -184,7 +186,12 @@ public class principal extends javax.swing.JFrame {
             File selectedFile = jfc.getSelectedFile();
             lblarchivosel.setText(selectedFile.getAbsolutePath());
             lastcontent = Inicio.ReadContent(selectedFile);
-            txtusr.setText(lastcontent);
+            Inicio.getUsers(lastcontent);
+            Inicio.getRelationships(lastcontent);
+            String result = Inicio.refreshUsers();
+            Inicio.f.txtusr.setText(result);
+            result = Inicio.refreshRels();
+            Inicio.f.txtrel.setText(result);
             JOptionPane.showMessageDialog(null, "Recuerde guardar para mantener los cambios en la memoria", "RECORDATORIO",JOptionPane.INFORMATION_MESSAGE);
             btnsave.setEnabled(true);
 	}
@@ -192,7 +199,12 @@ public class principal extends javax.swing.JFrame {
 
     private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
         // TODO add your handling code here:
-        Boolean val = Inicio.WriteContent(lastcontent, Inicio.appfile);
+        String Lineas = "usuarios\r\n";
+        Lineas += this.txtusr.getText();
+        Lineas += "relaciones\r\n";
+        Lineas += this.txtrel.getText();
+        
+        Boolean val = Inicio.WriteContent(Lineas, Inicio.appfile);
         if (val == true){
             JOptionPane.showMessageDialog(null, "Se ha guardado el contenido satisfactoriamente", "GUARDADO",JOptionPane.INFORMATION_MESSAGE);
             btnsave.setEnabled(false);
@@ -214,11 +226,21 @@ public class principal extends javax.swing.JFrame {
         if (aguser.val == true)
         {
             JOptionPane.showMessageDialog(null, "Recuerde guardar para mantener los cambios en la memoria", "RECORDATORIO", JOptionPane.INFORMATION_MESSAGE);
+            this.btnsave.setEnabled(true);
         }
     }//GEN-LAST:event_adduserActionPerformed
 
     private void addrelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addrelActionPerformed
         // TODO add your handling code here:
+        dlgrel agrel = new dlgrel(this, true);
+        agrel.fillUser1();
+        agrel.fillUser2();
+        agrel.setVisible(true);
+        if (agrel.val == true)
+        {
+            JOptionPane.showMessageDialog(null, "Recuerde guardar para mantener los cambios en la memoria", "RECORDATORIO", JOptionPane.INFORMATION_MESSAGE);
+            this.btnsave.setEnabled(true);
+        }  
     }//GEN-LAST:event_addrelActionPerformed
     
     /**

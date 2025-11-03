@@ -45,8 +45,12 @@ public class Inicio {
         getUsers(lastcontent);
         getRelationships(lastcontent);
         
+        String Result;
         f.setVisible(true);
-        f.txtusr.setText(lastcontent);
+        Result = refreshUsers();
+        f.txtusr.setText(Result);
+        Result = refreshRels();
+        f.txtrel.setText(Result);
     }
     public static String ReadContent(File txt)
     {
@@ -151,19 +155,22 @@ public class Inicio {
         }
     }
     
-    public static String refreshtext()
+    public static String refreshUsers()
     {
-        String texto = "usuarios\r\n";
+        String texto = "";
         for(int i=0; i<objUsers.users.length; i++)
         {
             texto += objUsers.users[i] + "\r\n";
         }
-        texto += "relaciones" + "\r\n";
+        return texto;
+    }
+    public static String refreshRels()
+    {
+        String texto = "";
         for(int i = 0; i<objRels.relations.length; i++)
         {
             texto += objRels.relations[i][0]+","+objRels.relations[i][1]+"\r\n";
         }
         return texto;
     }
-    
 }

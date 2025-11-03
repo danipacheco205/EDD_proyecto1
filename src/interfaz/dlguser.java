@@ -63,7 +63,7 @@ public class dlguser extends javax.swing.JDialog {
         jPanel1.add(dlgtext, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 360, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Debe colocar \"@\" al principio del username");
+        jLabel3.setText("Debe colocar \"@\" al principio del nombre de usuario");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -125,10 +125,9 @@ public class dlguser extends javax.swing.JDialog {
                 if (Inicio.objUsers.userexists(username)== false)
                 {
                     Inicio.objUsers.addusers(username);
-                    String s = Inicio.refreshtext();
+                    String result = Inicio.refreshUsers();
                     JOptionPane.showMessageDialog(null, "El usuario ha sido agregado exitosamente", "AGREGADO", JOptionPane.INFORMATION_MESSAGE);
-                    Inicio.f.txtusr.setText(s);
-                    Inicio.f.btnsave.setEnabled(true);
+                    Inicio.f.txtusr.setText(result);
                     this.val = true;
                     this.dispose();
                 }
@@ -146,7 +145,6 @@ public class dlguser extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        val = true;
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
