@@ -42,4 +42,19 @@ public class Nodo ///Usuarios
         }  
         return false;
     }
+    
+    public void deleteuser(String deluser)
+    {
+        String[] tmpuser = new String[this.users.length - 1];
+        int indx = 0;
+        for(int i=0; i<this.users.length; i++)
+        {
+            if(!deluser.equals(this.users[i]))
+            {
+                tmpuser[indx] = this.users[i];
+                indx++;
+            }
+        }
+        this.users = tmpuser;
+    }
 }

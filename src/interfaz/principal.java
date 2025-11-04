@@ -50,7 +50,7 @@ public class principal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnsave = new javax.swing.JButton();
         adduser = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        deluser = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtusr = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
@@ -112,13 +112,13 @@ public class principal extends javax.swing.JFrame {
         });
         jPanel1.add(adduser, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, -1, -1));
 
-        jButton2.setText("Eliminar usuario");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        deluser.setText("Eliminar usuario");
+        deluser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                deluserActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, -1, -1));
+        jPanel1.add(deluser, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, -1, -1));
 
         txtusr.setEditable(false);
         txtusr.setBackground(new java.awt.Color(255, 255, 255));
@@ -215,9 +215,17 @@ public class principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnsaveActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void deluserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deluserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        dlgdeluser deletuser = new dlgdeluser(this,true);
+        deletuser.filldelUser();
+        deletuser.setVisible(true);
+        if (deletuser.val == true)
+        {
+            JOptionPane.showMessageDialog(null, "Recuerde guardar para mantener los cambios en la memoria", "RECORDATORIO", JOptionPane.INFORMATION_MESSAGE);
+            this.btnsave.setEnabled(true);
+        }
+    }//GEN-LAST:event_deluserActionPerformed
 
     private void adduserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adduserActionPerformed
         // TODO add your handling code here:
@@ -274,7 +282,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton bsalir;
     public javax.swing.JButton btnsave;
     private javax.swing.JButton bttcargar;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton deluser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

@@ -42,4 +42,27 @@ public class Aristas  ///relaciones entre usuarios
         }
         return false;
     }
+    
+    public void delrelbyuser(String deluser)
+    {
+        int newlen = this.relations.length;
+        for (int i = 0; i<this.relations.length; i++)
+        {
+            if (deluser.equals(this.relations[i][0])||deluser.equals(this.relations[i][1]))
+            {
+                newlen -= 1;
+            }
+        }
+        String[][] tmprel = new String[newlen][2];
+        int indx = 0;
+        for(int i=0; i<this.relations.length; i++)
+        {
+            if(!deluser.equals(this.relations[i][0])&&!deluser.equals(this.relations[i][1]))
+            {
+                tmprel[indx] = this.relations[i];
+                indx++;
+            }
+        }
+        this.relations = tmprel;
+    }
 }

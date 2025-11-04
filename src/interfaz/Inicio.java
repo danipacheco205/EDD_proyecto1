@@ -112,6 +112,7 @@ public class Inicio {
         String[] info = lastContent.toLowerCase().split("relaciones");
         String val = info[0].replace("usuarios\r\n", "");
         String[] tmp_users = val.split("\r\n");
+        objUsers.users = new String[0];
         
         for(int i=0;i<tmp_users.length; i++)
         {
@@ -128,6 +129,7 @@ public class Inicio {
     
     public static void getRelationships(String lastContent)
     {
+        objRels.relations = new String[0][2];
         String[][] rels = {};
         if(lastContent.contains("relaciones"))
         {
