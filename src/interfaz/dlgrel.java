@@ -146,7 +146,7 @@ public class dlgrel extends javax.swing.JDialog {
             {    
                 if (Inicio.objRels.relexist(user1, user2) == true)
                 {
-                    JOptionPane.showMessageDialog(null, "No debe agregar una relación que ya existe", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "No puede agregar una relación que ya existe", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
                 else
                 {

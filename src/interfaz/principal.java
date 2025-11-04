@@ -13,6 +13,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JFileChooser;
 import java.io.File;
 import javax.swing.JOptionPane;
+import org.graphstream.graph.*;
+import org.graphstream.graph.implementations.*;
 
 
 /**
@@ -64,6 +66,7 @@ public class principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setMaximumSize(new java.awt.Dimension(700, 500));
         jPanel1.setMinimumSize(new java.awt.Dimension(700, 500));
         jPanel1.setPreferredSize(new java.awt.Dimension(700, 500));
@@ -106,6 +109,7 @@ public class principal extends javax.swing.JFrame {
         });
         jPanel1.add(btnsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, 80, 30));
 
+        adduser.setBackground(new java.awt.Color(204, 255, 255));
         adduser.setText("Agregar usuario");
         adduser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +118,7 @@ public class principal extends javax.swing.JFrame {
         });
         jPanel1.add(adduser, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, -1, -1));
 
+        deluser.setBackground(new java.awt.Color(204, 255, 255));
         deluser.setText("Eliminar usuario");
         deluser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,6 +151,7 @@ public class principal extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 380, 160));
 
+        addrel.setBackground(new java.awt.Color(204, 255, 255));
         addrel.setText("Agregar relación");
         addrel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,6 +160,7 @@ public class principal extends javax.swing.JFrame {
         });
         jPanel1.add(addrel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, -1, -1));
 
+        delrel.setBackground(new java.awt.Color(204, 255, 255));
         delrel.setText("Eliminar relación");
         delrel.setMaximumSize(new java.awt.Dimension(123, 23));
         delrel.setMinimumSize(new java.awt.Dimension(123, 23));
@@ -164,9 +171,15 @@ public class principal extends javax.swing.JFrame {
         });
         jPanel1.add(delrel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setBackground(new java.awt.Color(102, 255, 153));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton1.setText("Ver grafo");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, 100, 60));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 120, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -257,6 +270,13 @@ public class principal extends javax.swing.JFrame {
         delrela.filldelRel();
         delrela.setVisible(true);
     }//GEN-LAST:event_delrelActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        System.setProperty("org.graphstream.ui", "swing"); 
+        GrafoDirigido graf = new GrafoDirigido();
+        graf.vergrafo();
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     /**
      * @param args the command line arguments
