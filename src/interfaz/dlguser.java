@@ -12,7 +12,6 @@ import javax.swing.JOptionPane;
  */
 public class dlguser extends javax.swing.JDialog {
     
-    public boolean val = false;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(dlguser.class.getName());
 
@@ -128,8 +127,8 @@ public class dlguser extends javax.swing.JDialog {
                     String result = Inicio.refreshUsers();
                     JOptionPane.showMessageDialog(null, "El usuario ha sido agregado exitosamente", "AGREGADO", JOptionPane.INFORMATION_MESSAGE);
                     Inicio.f.txtusr.setText(result);
-                    this.val = true;
                     this.dispose();
+                    Inicio.recordatorio();
                 }
                 else
                 {

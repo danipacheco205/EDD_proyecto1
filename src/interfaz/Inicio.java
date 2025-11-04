@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.BufferedReader;
+import javax.swing.JOptionPane;
 
 /**
  * @author Daniela
@@ -166,6 +167,7 @@ public class Inicio {
         }
         return texto;
     }
+    
     public static String refreshRels()
     {
         String texto = "";
@@ -174,5 +176,11 @@ public class Inicio {
             texto += objRels.relations[i][0]+","+objRels.relations[i][1]+"\r\n";
         }
         return texto;
+    }
+    
+    public static void recordatorio()
+    {
+        JOptionPane.showMessageDialog(null, "Recuerde guardar para mantener los cambios en la memoria", "RECORDATORIO", JOptionPane.INFORMATION_MESSAGE);
+        f.btnsave.setEnabled(true);
     }
 }

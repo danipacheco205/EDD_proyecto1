@@ -58,6 +58,8 @@ public class principal extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         txtrel = new javax.swing.JTextArea();
         addrel = new javax.swing.JButton();
+        delrel = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -110,7 +112,7 @@ public class principal extends javax.swing.JFrame {
                 adduserActionPerformed(evt);
             }
         });
-        jPanel1.add(adduser, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, -1, -1));
+        jPanel1.add(adduser, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, -1, -1));
 
         deluser.setText("Eliminar usuario");
         deluser.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +120,7 @@ public class principal extends javax.swing.JFrame {
                 deluserActionPerformed(evt);
             }
         });
-        jPanel1.add(deluser, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, -1, -1));
+        jPanel1.add(deluser, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, -1));
 
         txtusr.setEditable(false);
         txtusr.setBackground(new java.awt.Color(255, 255, 255));
@@ -144,13 +146,27 @@ public class principal extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 380, 160));
 
-        addrel.setText("Agregar relacción");
+        addrel.setText("Agregar relación");
         addrel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addrelActionPerformed(evt);
             }
         });
-        jPanel1.add(addrel, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, -1, -1));
+        jPanel1.add(addrel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, -1, -1));
+
+        delrel.setText("Eliminar relación");
+        delrel.setMaximumSize(new java.awt.Dimension(123, 23));
+        delrel.setMinimumSize(new java.awt.Dimension(123, 23));
+        delrel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delrelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(delrel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, -1, -1));
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setText("Ver grafo");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, 100, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -192,8 +208,7 @@ public class principal extends javax.swing.JFrame {
             Inicio.f.txtusr.setText(result);
             result = Inicio.refreshRels();
             Inicio.f.txtrel.setText(result);
-            JOptionPane.showMessageDialog(null, "Recuerde guardar para mantener los cambios en la memoria", "RECORDATORIO",JOptionPane.INFORMATION_MESSAGE);
-            btnsave.setEnabled(true);
+            Inicio.recordatorio();
 	}
     }//GEN-LAST:event_bttcargarActionPerformed
 
@@ -220,22 +235,12 @@ public class principal extends javax.swing.JFrame {
         dlgdeluser deletuser = new dlgdeluser(this,true);
         deletuser.filldelUser();
         deletuser.setVisible(true);
-        if (deletuser.val == true)
-        {
-            JOptionPane.showMessageDialog(null, "Recuerde guardar para mantener los cambios en la memoria", "RECORDATORIO", JOptionPane.INFORMATION_MESSAGE);
-            this.btnsave.setEnabled(true);
-        }
     }//GEN-LAST:event_deluserActionPerformed
 
     private void adduserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adduserActionPerformed
         // TODO add your handling code here:
         dlguser aguser = new dlguser(this, true);
         aguser.setVisible(true);
-        if (aguser.val == true)
-        {
-            JOptionPane.showMessageDialog(null, "Recuerde guardar para mantener los cambios en la memoria", "RECORDATORIO", JOptionPane.INFORMATION_MESSAGE);
-            this.btnsave.setEnabled(true);
-        }
     }//GEN-LAST:event_adduserActionPerformed
 
     private void addrelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addrelActionPerformed
@@ -244,12 +249,14 @@ public class principal extends javax.swing.JFrame {
         agrel.fillUser1();
         agrel.fillUser2();
         agrel.setVisible(true);
-        if (agrel.val == true)
-        {
-            JOptionPane.showMessageDialog(null, "Recuerde guardar para mantener los cambios en la memoria", "RECORDATORIO", JOptionPane.INFORMATION_MESSAGE);
-            this.btnsave.setEnabled(true);
-        }  
     }//GEN-LAST:event_addrelActionPerformed
+
+    private void delrelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delrelActionPerformed
+        // TODO add your handling code here:
+        dlgdelrel delrela = new dlgdelrel(this,true);
+        delrela.filldelRel();
+        delrela.setVisible(true);
+    }//GEN-LAST:event_delrelActionPerformed
     
     /**
      * @param args the command line arguments
@@ -282,7 +289,9 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton bsalir;
     public javax.swing.JButton btnsave;
     private javax.swing.JButton bttcargar;
+    private javax.swing.JButton delrel;
     private javax.swing.JButton deluser;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

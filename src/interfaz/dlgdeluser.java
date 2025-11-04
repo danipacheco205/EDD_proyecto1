@@ -12,7 +12,6 @@ import javax.swing.JOptionPane;
  */
 public class dlgdeluser extends javax.swing.JDialog {
     
-    public boolean val = false;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(dlgrel.class.getName());
 
@@ -110,7 +109,7 @@ public class dlgdeluser extends javax.swing.JDialog {
         }
         else  
         {
-            int result = JOptionPane.showConfirmDialog(null, "Está seguro de eliminar el usuario "+seluser, "CONFIRMACIÓN", JOptionPane.YES_NO_OPTION);
+            int result = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar el usuario "+seluser+"?", "CONFIRMACIÓN", JOptionPane.YES_NO_OPTION);
             if (result == JOptionPane.YES_OPTION)
             {
                 Inicio.objUsers.deleteuser(seluser);
@@ -120,8 +119,8 @@ public class dlgdeluser extends javax.swing.JDialog {
                 Inicio.f.txtusr.setText(newtext);
                 newtext = Inicio.refreshRels();
                 Inicio.f.txtrel.setText(newtext);
-                this.val = true;
                 this.dispose();
+                Inicio.recordatorio();
             }
         }
     }//GEN-LAST:event_btaceptActionPerformed

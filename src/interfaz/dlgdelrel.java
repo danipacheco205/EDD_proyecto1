@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
  *
  * @author Daniela
  */
-public class dlgrel extends javax.swing.JDialog {
+public class dlgdelrel extends javax.swing.JDialog {
     
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(dlgrel.class.getName());
@@ -18,7 +18,7 @@ public class dlgrel extends javax.swing.JDialog {
     /**
      * Creates new form dlgrel
      */
-    public dlgrel(java.awt.Frame parent, boolean modal) {
+    public dlgdelrel(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -35,46 +35,30 @@ public class dlgrel extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         btacept = new javax.swing.JButton();
         btcancel = new javax.swing.JButton();
-        user1s = new javax.swing.JComboBox<>();
-        user2s = new javax.swing.JComboBox<>();
+        delrel = new javax.swing.JComboBox<>();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel1.setText("Agregar nuevo usuario");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(494, 250));
+        setMinimumSize(new java.awt.Dimension(442, 188));
         setResizable(false);
 
-        jPanel1.setMaximumSize(new java.awt.Dimension(494, 250));
-        jPanel1.setMinimumSize(new java.awt.Dimension(494, 250));
-        jPanel1.setPreferredSize(new java.awt.Dimension(494, 250));
+        jPanel1.setMaximumSize(new java.awt.Dimension(442, 188));
+        jPanel1.setMinimumSize(new java.awt.Dimension(442, 188));
+        jPanel1.setPreferredSize(new java.awt.Dimension(442, 188));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        jLabel2.setText("Agregar nueva relación");
+        jLabel2.setText("Eliminar relación");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Seleccione el usuario relacionado:  ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
-
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Seleccion un usuario existente con el que se establecerá la relación:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("Nota:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, 20));
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setText("No puedes agregar una relación con el mismo usuario");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+        jLabel4.setText("Seleccion la relación a eliminar:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
         btacept.setText("Aceptar");
         btacept.setMaximumSize(new java.awt.Dimension(76, 29));
@@ -85,7 +69,7 @@ public class dlgrel extends javax.swing.JDialog {
                 btaceptActionPerformed(evt);
             }
         });
-        jPanel1.add(btacept, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 90, 30));
+        jPanel1.add(btacept, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 90, 30));
 
         btcancel.setText("Cancelar");
         btcancel.setMaximumSize(new java.awt.Dimension(76, 29));
@@ -96,32 +80,20 @@ public class dlgrel extends javax.swing.JDialog {
                 btcancelActionPerformed(evt);
             }
         });
-        jPanel1.add(btcancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 90, 30));
+        jPanel1.add(btcancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 90, 30));
 
-        user1s.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(user1s, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 180, -1));
-
-        user2s.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        user2s.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                user2sActionPerformed(evt);
-            }
-        });
-        jPanel1.add(user2s, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 180, -1));
+        delrel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(delrel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 180, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -130,33 +102,23 @@ public class dlgrel extends javax.swing.JDialog {
 
     private void btaceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btaceptActionPerformed
         // TODO add your handling code here:
-        String user1 = this.user1s.getSelectedItem().toString();
-        String user2 = this.user2s.getSelectedItem().toString();
-        if (user1.equals("--Seleccionar--")||user2.equals("--Seleccionar--"))
+        String selrel = this.delrel.getSelectedItem().toString();
+        if (selrel.equals("--Seleccionar--"))
         {   
-            JOptionPane.showMessageDialog(null, "Debe seleccionar tanto el usuario como su relación.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Debe seleccionar la relación a eliminar.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
         else  
         {
-            if (user1.equals(user2))
+            int result = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar el usuario "+selrel+"?", "CONFIRMACIÓN", JOptionPane.YES_NO_OPTION);
+            if (result == JOptionPane.YES_OPTION)
             {
-                JOptionPane.showMessageDialog(null, "No se puede establecer una relación de un usario con él mismo.", "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-            else
-            {    
-                if (Inicio.objRels.relexist(user1, user2) == true)
-                {
-                    JOptionPane.showMessageDialog(null, "No debe agregar una relación que ya existe", "ERROR", JOptionPane.ERROR_MESSAGE);
-                }
-                else
-                {
-                    Inicio.objRels.addrelations(user1, user2);
-                    JOptionPane.showMessageDialog(null, "Se ha agregado la relación satisfactoriamente", "AGREGADO", JOptionPane.INFORMATION_MESSAGE);
-                    String result = Inicio.refreshRels();
-                    Inicio.f.txtrel.setText(result);
-                    this.dispose();
-                    Inicio.recordatorio();
-                }
+                Inicio.objRels.delrelation(selrel);
+                JOptionPane.showMessageDialog(null, "Se ha eliminado la relación correctamente.", "ELIMINADO", JOptionPane.INFORMATION_MESSAGE);
+                String newtext = Inicio.refreshRels();
+                Inicio.f.txtrel.setText(newtext);
+                this.dispose();
+                Inicio.recordatorio();
+                
             }
         }
     }//GEN-LAST:event_btaceptActionPerformed
@@ -165,10 +127,6 @@ public class dlgrel extends javax.swing.JDialog {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btcancelActionPerformed
-
-    private void user2sActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_user2sActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_user2sActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,37 +165,24 @@ public class dlgrel extends javax.swing.JDialog {
         });
     }
     
-    public void fillUser1()
+    public void filldelRel()
     {
-        this.user1s.removeAllItems();
-        this.user1s.addItem("--Seleccionar--");
-        for(int i=0; i<Inicio.objUsers.users.length; i++)
+        this.delrel.removeAllItems();
+        this.delrel.addItem("--Seleccionar--");
+        for(int i=0; i<Inicio.objRels.relations.length; i++)
         {
-            this.user1s.addItem(Inicio.objUsers.users[i]);
+            this.delrel.addItem(Inicio.objRels.relations[i][0] + ", " + Inicio.objRels.relations[i][1]);
         }
     }
-    
-    public void fillUser2()
-    {
-        this.user2s.removeAllItems();
-        this.user2s.addItem("--Seleccionar--");
-        for(int i=0; i<Inicio.objUsers.users.length; i++)
-        {
-            this.user2s.addItem(Inicio.objUsers.users[i]);
-        }
-    }
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btacept;
     private javax.swing.JButton btcancel;
+    public javax.swing.JComboBox<String> delrel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    public javax.swing.JComboBox<String> user1s;
-    public javax.swing.JComboBox<String> user2s;
     // End of variables declaration//GEN-END:variables
 }

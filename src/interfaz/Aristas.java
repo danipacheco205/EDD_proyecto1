@@ -65,4 +65,20 @@ public class Aristas  ///relaciones entre usuarios
         }
         this.relations = tmprel;
     }
+    
+    public void delrelation(String relation)
+    {
+        String[][] reltemp = new String[this.relations.length-1][2];
+        int indx = 0;
+        for(int i=0; i<this.relations.length; i++)
+        {
+            String Combine = this.relations[i][0] + ", " + this.relations[i][1];
+            if(!relation.equals(Combine))
+            {
+                reltemp[indx] = this.relations[i];
+                indx++;
+            }
+        }
+        this.relations = reltemp;
+    }
 }
