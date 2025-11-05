@@ -31,12 +31,13 @@ public class GrafoDirigido {
             + "   fill-color: blue;"
             + "   size: 75px;"
             + "   text-alignment: center;"
-            + "   text-size: 14;"
-            + "   text-color: white;"
+            + "   shape: circle; "
+            + "   size-mode: dyn-size;"        
+            + "   text-size: 10;"
+            + "   text-color: white;"       
             + "   text-style: bold;}"
             + "edge {"
-            + "   size: 5px;"                  
-            + "   arrow-size: 15px, 15px;" 
+            + "   arrow-size: 7px, 7px;"      
             + "}");
         Viewer view = grafo.display();
         view.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
