@@ -78,7 +78,7 @@ public class principal extends javax.swing.JFrame {
                 bttcargarActionPerformed(evt);
             }
         });
-        jPanel1.add(bttcargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, -1, 30));
+        jPanel1.add(bttcargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, -1, 30));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Archivo seleccionado:");
@@ -179,7 +179,7 @@ public class principal extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 120, 50));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, 120, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

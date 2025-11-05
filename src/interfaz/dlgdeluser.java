@@ -39,6 +39,7 @@ public class dlgdeluser extends javax.swing.JDialog {
         btacept = new javax.swing.JButton();
         btcancel = new javax.swing.JButton();
         deluser1 = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel1.setText("Agregar nuevo usuario");
@@ -47,6 +48,7 @@ public class dlgdeluser extends javax.swing.JDialog {
         setMinimumSize(new java.awt.Dimension(442, 188));
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
         jPanel1.setMaximumSize(new java.awt.Dimension(442, 188));
         jPanel1.setMinimumSize(new java.awt.Dimension(442, 188));
         jPanel1.setPreferredSize(new java.awt.Dimension(442, 188));
@@ -57,8 +59,8 @@ public class dlgdeluser extends javax.swing.JDialog {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Seleccion el usuario a eliminar:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+        jLabel4.setText("Se eliminará todas las relaciones que contenga este usuario");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
         btacept.setText("Aceptar");
         btacept.setMaximumSize(new java.awt.Dimension(76, 29));
@@ -83,7 +85,11 @@ public class dlgdeluser extends javax.swing.JDialog {
         jPanel1.add(btcancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 90, 30));
 
         deluser1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(deluser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 180, -1));
+        jPanel1.add(deluser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 180, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setText("Seleccion el usuario a eliminar:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -185,6 +191,7 @@ public class dlgdeluser extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

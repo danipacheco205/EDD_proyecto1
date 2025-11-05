@@ -23,9 +23,9 @@ public class Aristas  /** relaciones entre usuarios */
     {
         /** 
         * Agrega una relación al arreglo de Strings relations
-        * Realiza una copia del arreglo de la clase y le aumenta el tamaño a la copia a 1 índice más
-        * Añade la relación en la posición del tamaño menos 1 índice
-        * Establece que el atributo relations será igual a la copia del arreglo
+        * Realiza una copia del arreglo de la clase llamada addrel y le aumenta el tamaño a la copia a 1 posición más
+        * Agrega la relación en la posición del tamaño menos 1 índice
+        * Establece que el atributo relations será igual a addrel
         */
         
         String[][] addrel = new String[this.relations.length + 1][2];

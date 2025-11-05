@@ -173,7 +173,7 @@ public class Inicio {
         String texto = "";
         for(int i = 0; i<objRels.relations.length; i++)
         {
-            texto += objRels.relations[i][0]+","+objRels.relations[i][1]+"\r\n";
+            texto += objRels.relations[i][0]+", "+objRels.relations[i][1]+"\r\n";
         }
         return texto;
     }

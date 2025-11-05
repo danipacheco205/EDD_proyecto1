@@ -44,6 +44,7 @@ public class dlguser extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
         jPanel1.setMaximumSize(new java.awt.Dimension(402, 204));
         jPanel1.setMinimumSize(new java.awt.Dimension(402, 204));
         jPanel1.setName(""); // NOI18N
@@ -112,7 +113,7 @@ public class dlguser extends javax.swing.JDialog {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        String username = dlgtext.getText();
+        String username = dlgtext.getText().toLowerCase();
         if (username.contains(",") || username.contains(";")|| username.contains("'")|| username.contains("\"") || username.trim().length() == 0)
         {
             JOptionPane.showMessageDialog(null, "Debes seguir el formato especificado", "ERROR", JOptionPane.ERROR_MESSAGE);

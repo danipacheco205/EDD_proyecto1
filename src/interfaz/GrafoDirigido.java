@@ -37,9 +37,21 @@ public class GrafoDirigido {
             + "   text-color: white;"       
             + "   text-style: bold;}"
             + "edge {"
-            + "   arrow-size: 7px, 7px;"      
+            + "   arrow-size: 7px, 7px;" 
+            + "   size: 3px;"
             + "}");
         Viewer view = grafo.display();
         view.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
+    }
+    
+    public void algkosaraju()
+    {
+        String[] numnodos = new String[Inicio.objUsers.users.length];
+        int numnodo = 0;
+        for(int i = 0; i<numnodos.length; i++)
+        {
+            numnodos[i] = Integer.toString(numnodo);
+            numnodo ++;
+        }
     }
 }

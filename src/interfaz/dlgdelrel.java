@@ -47,6 +47,7 @@ public class dlgdelrel extends javax.swing.JDialog {
         setMinimumSize(new java.awt.Dimension(442, 188));
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
         jPanel1.setMaximumSize(new java.awt.Dimension(442, 188));
         jPanel1.setMinimumSize(new java.awt.Dimension(442, 188));
         jPanel1.setPreferredSize(new java.awt.Dimension(442, 188));
