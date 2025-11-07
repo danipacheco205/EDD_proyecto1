@@ -43,6 +43,7 @@ public class dlgrel extends javax.swing.JDialog {
         btcancel = new javax.swing.JButton();
         user1s = new javax.swing.JComboBox<>();
         user2s = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel1.setText("Agregar nuevo usuario");
@@ -62,20 +63,20 @@ public class dlgrel extends javax.swing.JDialog {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Seleccione el usuario relacionado:  ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+        jLabel3.setText("Seleccione otro usuario existente relacionado:  ");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Seleccion un usuario existente con el que se establecerá la relación:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        jLabel4.setText("unilateral de su parte:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 290, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Nota:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, 20));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, 20));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("No puedes agregar una relación con el mismo usuario");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
         btacept.setText("Aceptar");
         btacept.setMaximumSize(new java.awt.Dimension(76, 29));
@@ -100,7 +101,7 @@ public class dlgrel extends javax.swing.JDialog {
         jPanel1.add(btcancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 90, 30));
 
         user1s.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(user1s, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 180, -1));
+        jPanel1.add(user1s, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 180, -1));
 
         user2s.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         user2s.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +109,11 @@ public class dlgrel extends javax.swing.JDialog {
                 user2sActionPerformed(evt);
             }
         });
-        jPanel1.add(user2s, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 180, -1));
+        jPanel1.add(user2s, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 180, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setText("Seleccione un usuario existente con el que se establecerá una relación");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 470, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,7 +159,7 @@ public class dlgrel extends javax.swing.JDialog {
                     Inicio.objRels.addrelations(user1, user2);
                     JOptionPane.showMessageDialog(null, "Se ha agregado la relación satisfactoriamente", "AGREGADO", JOptionPane.INFORMATION_MESSAGE);
                     String result = Inicio.refreshRels();
-                    Inicio.f.txtrel.setText(result);
+                    Inicio.princ.txtrel.setText(result);
                     this.dispose();
                     Inicio.recordatorio();
                 }
@@ -209,7 +214,12 @@ public class dlgrel extends javax.swing.JDialog {
     }
     
     public void fillUser1()
-    {
+    {   /**
+        * Elimina todos los items de la lista de selección 1 o ComboBox(users1s)
+        * Agrega un item a la lista de selección 1(users1s) llamado "--Seleccionar--" que indics que es estrictamente necesario seleccionar un usuario
+        * Modifica la lista de selección 1(users1s)  para que solo estén los usuarios del arreglo users
+        * Itera todos los usuarios (nodos) en el arreglo users y los agrega a la caja de texto
+        */
         this.user1s.removeAllItems();
         this.user1s.addItem("--Seleccionar--");
         for(int i=0; i<Inicio.objUsers.users.length; i++)
@@ -220,6 +230,12 @@ public class dlgrel extends javax.swing.JDialog {
     
     public void fillUser2()
     {
+         /**
+        * Elimina todos los items de la lista de selección 2 o ComboBox(users2s)
+        * Agrega un item a la lista de selección 2(users2s) llamado "--Seleccionar--" que indics que es estrictamente necesario seleccionar un usuario
+        * Modifica la lista de selección 2(users2s)  para que solo estén los usuarios del arreglo users
+        * Itera todos los usuarios (nodos) en el arreglo users y los agrega a la caja de texto
+        */
         this.user2s.removeAllItems();
         this.user2s.addItem("--Seleccionar--");
         for(int i=0; i<Inicio.objUsers.users.length; i++)
@@ -237,6 +253,7 @@ public class dlgrel extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JComboBox<String> user1s;
     public javax.swing.JComboBox<String> user2s;
