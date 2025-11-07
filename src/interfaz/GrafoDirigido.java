@@ -7,51 +7,78 @@ import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
 import org.graphstream.ui.view.Viewer;
 
+
 /**
  *
  * @author Daniela
  */
-public class GrafoDirigido {
-    
-    
+public class GrafoDirigido /**grafo con sus usuarios y aristas*/
+{
+    /**Arreglos para realizar el grafo*/
+    public String[] usuarios;
+    public String[][] relaciones;
+    public String[] colores;
+
+    public GrafoDirigido() 
+    {
+        this.usuarios = new String[0];             /**Crea un arreglo vacío llamado usuarios*/
+        this.relaciones = new String[0][2];        /**Crea un arreglo vacío con dos columnas llamado relaciones*/
+        this.colores = new String[0];              /**Crea un arreglo vacío llamado colores*/
+    }
+
     public void vergrafo()
     {
+        /**
+         * Crea un nuevo grafo donde puedes tener más de una relación para cada nodo,
+         * Establece que el arreglo de esta clase usuarios es del mismo tamaño que users,
+         * Establece que el arreglo relaciones de esta clase es del mismo tamaño que relations,
+         * Crea un nuevo arreglo llamado comuntemp que copia a todo el arreglo conjuntos de la clase Kosaraju,
+         * Crea una variable numérica que contendrá la cantidad de vertices o nodos que hay en el arreglo vertices de la clase Kosaraju,
+         * Se agregan diversos colores escritos en hexadecimal al arreglo de la clase colores
+         * 
+         * 
+         */
         Graph grafo = new MultiGraph("Grafo dirigido", false, true);
-        String[] usuarios = Inicio.objUsers.users;
-        String[][] relaciones = Inicio.objRels.relations;
-        for (int i= 0; i<usuarios.length; i++)
+        this.usuarios = Inicio.objUsers.users;
+        this.relaciones = Inicio.objRels.relations;
+        String[][] comuntemp = Inicio.kosara.scc;///
+        int numvertices = Inicio.objUsers.users.length;
+        this.colores = new String[]{"#ffafcd","#b0fae8","#c97bab","#7caaee","#9bee7c","#ffbb66","#ff6666","#3db822","#287fff","#f2f768","#53d699","#da9494"};
+        for (int h=0; h < numvertices; h++)
         {
-            Node nodo = grafo.addNode(usuarios[i]);
-            nodo.setAttribute("ui.label", usuarios[i]);
+            for (int i = 0; i<comuntemp.length; i++)
+            {
+                for (int j = 0; j<comuntemp[i].length; j++)
+                {
+                    if (comuntemp[i][j].equals(usuarios[h]))
+                    {
+                        Node nodo = grafo.addNode(usuarios[h]);
+                        nodo.setAttribute("ui.label", usuarios[h]);
+                        nodo.setAttribute("ui.style", "fill-color: " + this.colores[i]+";");
+                    }
+                }  
+            }
         }
+        
         for (int i= 0; i<relaciones.length; i++)
+        {
             grafo.addEdge(relaciones[i][0]+ ", " + relaciones[i][1], relaciones[i][0],relaciones[i][1], true);
-        grafo.setAttribute("ui.stylesheet", 
-            "node {"
-            + "   fill-color: blue;"
-            + "   size: 75px;"
-            + "   text-alignment: center;"
-            + "   shape: circle; "
-            + "   size-mode: dyn-size;"        
-            + "   text-size: 10;"
-            + "   text-color: white;"       
-            + "   text-style: bold;}"
-            + "edge {"
-            + "   arrow-size: 7px, 7px;" 
-            + "   size: 3px;"
-            + "}");
+        }
+        grafo.setAttribute("ui.stylesheet",  
+              "node {"
+        + "   size: 75px;"
+        + "   text-alignment: center;"
+        + "   shape: circle;"
+        + "   size-mode: dyn-size;"        
+        + "   text-size: 10;"
+        + "   text-color: black;"       
+        + "   text-style: bold;"
+        + "}"
+        + "edge {"
+        + "   size: 3px;"
+        + "   arrow-size: 7px, 7px;"      
+        + "}");
         Viewer view = grafo.display();
         view.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
-    }
-    
-    public void algkosaraju()
-    {
-        String[] numnodos = new String[Inicio.objUsers.users.length];
-        int numnodo = 0;
-        for(int i = 0; i<numnodos.length; i++)
-        {
-            numnodos[i] = Integer.toString(numnodo);
-            numnodo ++;
-        }
-    }
+    }   
 }

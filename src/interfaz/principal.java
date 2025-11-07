@@ -7,15 +7,10 @@ package interfaz;
 /**
  * Importa las librerías
 */
-import static interfaz.Inicio.getRelationships;
-import static interfaz.Inicio.getUsers;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JFileChooser;
 import java.io.File;
 import javax.swing.JOptionPane;
-import org.graphstream.graph.*;
-import org.graphstream.graph.implementations.*;
-
 
 /**
  *
@@ -198,13 +193,11 @@ public class principal extends javax.swing.JFrame {
 
     private void bsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsalirActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        System.exit(0);    /**Sale del programa*/
     }//GEN-LAST:event_bsalirActionPerformed
 
     private void bttcargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttcargarActionPerformed
         // TODO add your handling code here:
-        //dlgarchivosel f = new dlgarchivosel (this, true);
-        //f.setVisible(true);
         JFileChooser jfc = new JFileChooser();
         FileNameExtensionFilter txtonly = new FileNameExtensionFilter("Archivos de Texto", "txt");
         jfc.setFileFilter(txtonly);
@@ -218,9 +211,9 @@ public class principal extends javax.swing.JFrame {
             Inicio.getUsers(lastcontent);
             Inicio.getRelationships(lastcontent);
             String result = Inicio.refreshUsers();
-            Inicio.f.txtusr.setText(result);
+            Inicio.princ.txtusr.setText(result);
             result = Inicio.refreshRels();
-            Inicio.f.txtrel.setText(result);
+            Inicio.princ.txtrel.setText(result);
             Inicio.recordatorio();
 	}
     }//GEN-LAST:event_bttcargarActionPerformed
@@ -273,9 +266,10 @@ public class principal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        System.setProperty("org.graphstream.ui", "swing"); 
-        GrafoDirigido graf = new GrafoDirigido();
-        graf.vergrafo();
+        System.setProperty("org.graphstream.ui", "swing"); /**Selecciona la librería gráfica swing usará GraphStream para mostrar el grafo*/
+        //GrafoDirigido graf = new GrafoDirigido();
+        Inicio.kosara.getvalsKosaraju();
+        //graf.vergrafo();
     }//GEN-LAST:event_jButton1ActionPerformed
     
     /**

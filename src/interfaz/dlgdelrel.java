@@ -116,7 +116,7 @@ public class dlgdelrel extends javax.swing.JDialog {
                 Inicio.objRels.delrelation(selrel);
                 JOptionPane.showMessageDialog(null, "Se ha eliminado la relación correctamente.", "ELIMINADO", JOptionPane.INFORMATION_MESSAGE);
                 String newtext = Inicio.refreshRels();
-                Inicio.f.txtrel.setText(newtext);
+                Inicio.princ.txtrel.setText(newtext);
                 this.dispose();
                 Inicio.recordatorio();
                 
@@ -168,6 +168,7 @@ public class dlgdelrel extends javax.swing.JDialog {
     
     public void filldelRel()
     {
+        
         this.delrel.removeAllItems();
         this.delrel.addItem("--Seleccionar--");
         for(int i=0; i<Inicio.objRels.relations.length; i++)

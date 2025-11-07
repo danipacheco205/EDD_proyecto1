@@ -6,7 +6,7 @@ package interfaz;
 
 /**
  * Importa las librerías para leer y sobreescribir en el archivo txt
-*/
+ */
 import java.io.File;        
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -25,7 +25,8 @@ public class Inicio {
     public static File appfile = new File(strappfile);
     public static Nodo objUsers = new Nodo();
     public static Aristas objRels = new Aristas();
-    public static principal f = new principal();
+    public static principal princ = new principal();
+    public static Kosaraju kosara = new Kosaraju();
     
     public static void main(String[] args) {
         // TODO code application logic here
@@ -47,14 +48,18 @@ public class Inicio {
         getRelationships(lastcontent);
         
         String Result;
-        f.setVisible(true);
+        princ.setVisible(true);
         Result = refreshUsers();
-        f.txtusr.setText(Result);
+        princ.txtusr.setText(Result);
         Result = refreshRels();
-        f.txtrel.setText(Result);
+        princ.txtrel.setText(Result);
     }
+    
     public static String ReadContent(File txt)
     {
+        /**
+         * 
+         */
         String content = "";
         String line;
         try
@@ -75,6 +80,9 @@ public class Inicio {
     }
     public static Boolean WriteContent(String LastContent, File txt )
     {
+        /**
+         * 
+         */
         Boolean val = false;
         try
         {
@@ -92,6 +100,9 @@ public class Inicio {
     
     public static String cargadefault()
     {
+        /**
+         * 
+         */
         String newcontent = "usuarios\r\n@pepe\r\n@mazinger\r\n";
         newcontent += "@juanc\r\n@xoxojaime\r\n@tuqui33\r\n";
         newcontent += "@sancho23\r\n@terciopelo\r\n@caribedoble\r\n";
@@ -110,6 +121,9 @@ public class Inicio {
     
     public static void getUsers(String lastContent)
     {
+        /**
+         * 
+         */
         String[] info = lastContent.toLowerCase().split("relaciones");
         String val = info[0].replace("usuarios\r\n", "");
         String[] tmp_users = val.split("\r\n");
@@ -130,6 +144,9 @@ public class Inicio {
     
     public static void getRelationships(String lastContent)
     {
+        /**
+         * 
+         */
         objRels.relations = new String[0][2];
         String[][] rels = {};
         if(lastContent.contains("relaciones"))
@@ -160,6 +177,9 @@ public class Inicio {
     
     public static String refreshUsers()
     {
+        /**
+         * 
+         */
         String texto = "";
         for(int i=0; i<objUsers.users.length; i++)
         {
@@ -170,6 +190,9 @@ public class Inicio {
     
     public static String refreshRels()
     {
+        /**
+         * 
+         */
         String texto = "";
         for(int i = 0; i<objRels.relations.length; i++)
         {
@@ -180,7 +203,12 @@ public class Inicio {
     
     public static void recordatorio()
     {
+        /**
+         * Se muestra un mensaje recordandole a la persona que ejecuta el programa que debe guardar si desea manetener los cambios realizados,
+         * Esto actualizaría el archivo txt con los cambios incluidos,
+         * Habilita el botón de guardar
+         */
         JOptionPane.showMessageDialog(null, "Recuerde guardar para mantener los cambios en la memoria", "RECORDATORIO", JOptionPane.INFORMATION_MESSAGE);
-        f.btnsave.setEnabled(true);
+        princ.btnsave.setEnabled(true);
     }
 }
