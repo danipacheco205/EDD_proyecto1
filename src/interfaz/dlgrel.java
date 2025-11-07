@@ -216,9 +216,9 @@ public class dlgrel extends javax.swing.JDialog {
     public void fillUser1()
     {   /**
         * Elimina todos los items de la lista de selección 1 o ComboBox(users1s)
-        * Agrega un item a la lista de selección 1(users1s) llamado "--Seleccionar--" que indics que es estrictamente necesario seleccionar un usuario
+        * Agrega un item a la lista de selección 1(users1s) llamado "--Seleccionar--" que indica que es estrictamente necesario seleccionar un usuario
         * Modifica la lista de selección 1(users1s)  para que solo estén los usuarios del arreglo users
-        * Itera todos los usuarios (nodos) en el arreglo users y los agrega a la caja de texto
+        * Itera sobre todos los usuarios (nodos) del arreglo users y los agrega a la lista de selección 1(users1s)
         */
         this.user1s.removeAllItems();
         this.user1s.addItem("--Seleccionar--");
@@ -232,9 +232,9 @@ public class dlgrel extends javax.swing.JDialog {
     {
          /**
         * Elimina todos los items de la lista de selección 2 o ComboBox(users2s)
-        * Agrega un item a la lista de selección 2(users2s) llamado "--Seleccionar--" que indics que es estrictamente necesario seleccionar un usuario
+        * Agrega un item a la lista de selección 2(users2s) llamado "--Seleccionar--" que indica que es estrictamente necesario seleccionar un usuario
         * Modifica la lista de selección 2(users2s)  para que solo estén los usuarios del arreglo users
-        * Itera todos los usuarios (nodos) en el arreglo users y los agrega a la caja de texto
+        * Itera sobre todos los usuarios (nodos) del arreglo users y los agrega a la lista de selección 2(users2s)
         */
         this.user2s.removeAllItems();
         this.user2s.addItem("--Seleccionar--");

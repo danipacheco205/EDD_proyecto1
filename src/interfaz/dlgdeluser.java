@@ -59,7 +59,7 @@ public class dlgdeluser extends javax.swing.JDialog {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Se eliminará todas las relaciones que contenga este usuario");
+        jLabel4.setText("--Se eliminarán todas las relaciones que contenga este usuario--");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
         btacept.setText("Aceptar");
@@ -122,9 +122,9 @@ public class dlgdeluser extends javax.swing.JDialog {
                 Inicio.objRels.delrelbyuser(seluser);
                 JOptionPane.showMessageDialog(null, "Se ha eliminado el usuario correctamente.", "ELIMINADO", JOptionPane.INFORMATION_MESSAGE);
                 String newtext = Inicio.refreshUsers();
-                Inicio.f.txtusr.setText(newtext);
+                Inicio.princ.txtusr.setText(newtext);
                 newtext = Inicio.refreshRels();
-                Inicio.f.txtrel.setText(newtext);
+                Inicio.princ.txtrel.setText(newtext);
                 this.dispose();
                 Inicio.recordatorio();
             }
@@ -175,6 +175,12 @@ public class dlgdeluser extends javax.swing.JDialog {
     
     public void filldelUser()
     {
+        /**
+        * Elimina todos los items de la lista de selección o ComboBox(deluser1)
+        * Agrega un item al ComboBox(deluser1) llamado "--Seleccionar--" que indica que es estrictamente necesario seleccionar un usuario
+        * Modifica al ComboBox(deluser1) para que solo estén los usuarios del arreglo users
+        * Itera sobre todos los usuarios (nodos) del arreglo users y los agrega al ComboBox(deluser1)
+        */
         this.deluser1.removeAllItems();
         this.deluser1.addItem("--Seleccionar--");
         for(int i=0; i<Inicio.objUsers.users.length; i++)
