@@ -267,9 +267,10 @@ public class principal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         System.setProperty("org.graphstream.ui", "swing"); /**Selecciona la librería gráfica swing usará GraphStream para mostrar el grafo*/
-        //GrafoDirigido graf = new GrafoDirigido();
+        GrafoDirigido graf = new GrafoDirigido();
         Inicio.kosara.getvalsKosaraju();
-        //graf.vergrafo();
+        
+        graf.vergrafo();
     }//GEN-LAST:event_jButton1ActionPerformed
     
     /**

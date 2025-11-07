@@ -61,7 +61,9 @@ public class Aristas  /** relaciones entre usuarios */
     
     public void delrelbyuser(String deluser)
     {
-        
+        /**
+         * Elimina todas las relaciones del usuario que se eliminó
+         */
         int newlen = this.relations.length;
         for (int i = 0; i<this.relations.length; i++)
         {
@@ -85,6 +87,9 @@ public class Aristas  /** relaciones entre usuarios */
     
     public void delrelation(String relation)
     {
+        /**
+         * Solo elimina la relación seleccionada 
+         */
         String[][] reltemp = new String[this.relations.length-1][2];
         int indx = 0;
         for (int i=0; i<this.relations.length; i++)

@@ -32,11 +32,13 @@ public class GrafoDirigido /**grafo con sus usuarios y aristas*/
          * Crea un nuevo grafo donde puedes tener más de una relación para cada nodo,
          * Establece que el arreglo de esta clase usuarios es del mismo tamaño que users,
          * Establece que el arreglo relaciones de esta clase es del mismo tamaño que relations,
-         * Crea un nuevo arreglo llamado comuntemp que copia a todo el arreglo conjuntos de la clase Kosaraju,
-         * Crea una variable numérica que contendrá la cantidad de vertices o nodos que hay en el arreglo vertices de la clase Kosaraju,
-         * Se agregan diversos colores escritos en hexadecimal al arreglo de la clase colores
-         * 
-         * 
+         * Crea un nuevo arreglo llamado comuntemp que copia a todo el arreglo SCC de la clase Kosaraju,
+         * Crea una variable numérica que contendrá la cantidad de vertices o nodos que hay en el arreglo users,
+         * Se agregan diversos colores escritos en hexadecimal al arreglo de la clase colores,
+         * Se le atribuye al nodo creado un color dependiendo de donde este el nodo creado del arreglo SCC 
+         * Según el algoritmo de Kosaraju,
+         * Se crean Edges o aristas para la representación gráfica del grafo,
+         * Muestra el grafo en pantalla
          */
         Graph grafo = new MultiGraph("Grafo dirigido", false, true);
         this.usuarios = Inicio.objUsers.users;
@@ -46,10 +48,11 @@ public class GrafoDirigido /**grafo con sus usuarios y aristas*/
         this.colores = new String[]{"#ffafcd","#b0fae8","#c97bab","#7caaee","#9bee7c","#ffbb66","#ff6666","#3db822","#287fff","#f2f768","#53d699","#da9494"};
         for (int h=0; h < numvertices; h++)
         {
-            for (int i = 0; i<comuntemp.length; i++)
+            for (int i = 0; i<numvertices; i++)
             {
-                for (int j = 0; j<comuntemp[i].length; j++)
+                for (int j = 0; j<numvertices; j++)
                 {
+                    if(comuntemp[i][j]==null) break;
                     if (comuntemp[i][j].equals(usuarios[h]))
                     {
                         Node nodo = grafo.addNode(usuarios[h]);

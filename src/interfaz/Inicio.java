@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 public class Inicio {    
 
     /**
+     * Instancias públicas de las clases
      */
     public static String strappfile = System.getProperty("java.io.tmpdir") + "grafo.txt";
     public static File appfile = new File(strappfile);
@@ -58,7 +59,8 @@ public class Inicio {
     public static String ReadContent(File txt)
     {
         /**
-         * 
+         * Lee el contenido del archivo txt cargado
+         * Retorna su contenido
          */
         String content = "";
         String line;
@@ -81,7 +83,8 @@ public class Inicio {
     public static Boolean WriteContent(String LastContent, File txt )
     {
         /**
-         * 
+         * Guarda los cambios ejecutados de usuarios y relaciones en un archivo dentro de la carpeta temporal,
+         * para mantener los cambios al volver abrir el programa
          */
         Boolean val = false;
         try
@@ -101,7 +104,8 @@ public class Inicio {
     public static String cargadefault()
     {
         /**
-         * 
+         * Se crea cuando no existe el archivo txt de la carpeta temporal
+         * Esta información se carga automaticamente y creaa el archivo temporal
          */
         String newcontent = "usuarios\r\n@pepe\r\n@mazinger\r\n";
         newcontent += "@juanc\r\n@xoxojaime\r\n@tuqui33\r\n";
@@ -122,7 +126,7 @@ public class Inicio {
     public static void getUsers(String lastContent)
     {
         /**
-         * 
+         * Se obtienen los usuarios del archivo txt
          */
         String[] info = lastContent.toLowerCase().split("relaciones");
         String val = info[0].replace("usuarios\r\n", "");
@@ -145,7 +149,7 @@ public class Inicio {
     public static void getRelationships(String lastContent)
     {
         /**
-         * 
+         * Se obtiene las relaciones del archivo txt
          */
         objRels.relations = new String[0][2];
         String[][] rels = {};
@@ -178,7 +182,7 @@ public class Inicio {
     public static String refreshUsers()
     {
         /**
-         * 
+         * Actualiza el cuadro de texto de usuarios de la ventana principal
          */
         String texto = "";
         for(int i=0; i<objUsers.users.length; i++)
@@ -191,7 +195,7 @@ public class Inicio {
     public static String refreshRels()
     {
         /**
-         * 
+         * Actualiza el cuadro de texto de relaciones de la ventana principal
          */
         String texto = "";
         for(int i = 0; i<objRels.relations.length; i++)

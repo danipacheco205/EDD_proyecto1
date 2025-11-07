@@ -10,6 +10,9 @@ package interfaz;
  */
 public class Kosaraju 
 {
+    public int[][] numaristas;
+    public int numvertices;
+    public int [][] numaristasinver;
     public String[][] visited;
     public String[][] stack;
     public String[][] rels_normal;
@@ -24,6 +27,9 @@ public class Kosaraju
     
     public void getvalsKosaraju()
     {
+        /**
+         * Calcula los Strongly Connected Components (SCC)
+         */
         visited = new String[Inicio.objUsers.users.length][2];
         stack = new String[Inicio.objUsers.users.length][2];
         
@@ -73,10 +79,37 @@ public class Kosaraju
             stack[i][0] = conjunto[i];
             stack[i][1] = "F";
         }
+        
+        int row = 0;
+        for(int i=0; i<stack.length; i++)
+        {
+            int col = 0;
+            String current = stack[i][0];
+            String flag_vis = stack[i][1];
+            if(flag_vis == "F")
+            {
+                stack[i][1] = "T";
+                scc[row][col] = stack[i][0];
+                col++;
+                String nextnode;
+                while((nextnode=getNextNodeTranspose(current)) != "NA")
+                {
+                    markStackVisited(nextnode);
+                    scc[row][col] = nextnode;
+                    col++;
+                    current=nextnode;
+                }
+                row++;
+                col = 0;
+            }    
+        }  
     }
     
     public String getNextNodeNormal(String current)
     {
+        /**
+         * Ubica el próximo nodo conectado en el DFS1 (Depth First Search);
+         */
         String nextnode = "NA";
         for(int j=0; j<rels_normal.length; j++)
         {
@@ -98,6 +131,9 @@ public class Kosaraju
 
     public Boolean isVisited(String chkuser)
     {
+        /**
+         * Verifica si el nodo ya está marcado como visitado en el DFS1
+         */
         Boolean flag_visited = false;
         for(int k=0; k<visited.length; k++)
         {
@@ -115,6 +151,9 @@ public class Kosaraju
     
     public void markVisited(String chkuser)
     {
+        /**
+         * Marca el nodo como visitado dentro del DFS1
+         */
         for(int k=0; k<visited.length; k++)
         {
             if(chkuser.equals(visited[k][0]))
@@ -126,5 +165,68 @@ public class Kosaraju
                 break;
             }
         }
-    }    
+    }
+
+    public String getNextNodeTranspose(String current)
+    {
+        /**
+         * Busca el próximo nodo en la pila (STACK) en el DFS2 (DFS en el Transpose)
+         */
+        String nextnode = "NA";
+        for(int j=0; j<rels_transpose.length; j++)
+        {
+            if("F".equals(rels_transpose[j][2]))
+            {
+                if(current.equals(rels_transpose[j][0]))
+                {
+                    rels_transpose[j][2] = "T";
+                    if(!isStackVisited(rels_transpose[j][1]))
+                    {
+                        nextnode = rels_transpose[j][1];
+                        break;
+                    }
+                }
+            }
+        }
+        return nextnode;
+    }
+
+    public Boolean isStackVisited(String chkuser)
+    {
+        /**
+         * Verifica si el nodo de la pila ya fue visitado
+         */
+        Boolean flag_visited = false;
+        for(int k=0; k<stack.length; k++)
+        {
+            if(chkuser.equals(stack[k][0]))
+            {
+                if("T".equals(stack[k][1]))
+                {
+                    flag_visited = true;
+                }
+                break;
+            }
+        }
+        return flag_visited;
+    } 
+
+    public void markStackVisited(String chkuser)
+    {
+        /**
+         * Marca el nodo en la pila como visitado
+         */
+        for(int k=0; k<stack.length; k++)
+        {
+            if(chkuser.equals(stack[k][0]))
+            {
+                if("F".equals(stack[k][1]))
+                {
+                    stack[k][1] = "T";
+                }
+                break;
+            }
+        }
+    }
+    
 }
