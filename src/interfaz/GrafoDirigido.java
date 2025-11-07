@@ -43,7 +43,7 @@ public class GrafoDirigido /**grafo con sus usuarios y aristas*/
         Graph grafo = new MultiGraph("Grafo dirigido", false, true);
         this.usuarios = Inicio.objUsers.users;
         this.relaciones = Inicio.objRels.relations;
-        String[][] comuntemp = Inicio.kosara.scc;///
+        String[][] comuntemp = Inicio.kosara.scc;
         int numvertices = Inicio.objUsers.users.length;
         this.colores = new String[]{"#ffafcd","#b0fae8","#c97bab","#7caaee","#9bee7c","#ffbb66","#ff6666","#3db822","#287fff","#f2f768","#53d699","#da9494"};
         for (int h=0; h < numvertices; h++)

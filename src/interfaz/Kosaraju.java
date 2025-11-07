@@ -105,7 +105,7 @@ public class Kosaraju
         }  
     }
     
-    public String getNextNodeNormal(String current)
+    private String getNextNodeNormal(String current)
     {
         /**
          * Ubica el próximo nodo conectado en el DFS1 (Depth First Search);
@@ -129,7 +129,7 @@ public class Kosaraju
         return nextnode;
     }
 
-    public Boolean isVisited(String chkuser)
+    private Boolean isVisited(String chkuser)
     {
         /**
          * Verifica si el nodo ya está marcado como visitado en el DFS1
@@ -149,7 +149,7 @@ public class Kosaraju
         return flag_visited;
     } 
     
-    public void markVisited(String chkuser)
+    private void markVisited(String chkuser)
     {
         /**
          * Marca el nodo como visitado dentro del DFS1
@@ -167,7 +167,7 @@ public class Kosaraju
         }
     }
 
-    public String getNextNodeTranspose(String current)
+    private String getNextNodeTranspose(String current)
     {
         /**
          * Busca el próximo nodo en la pila (STACK) en el DFS2 (DFS en el Transpose)
@@ -191,7 +191,7 @@ public class Kosaraju
         return nextnode;
     }
 
-    public Boolean isStackVisited(String chkuser)
+    private Boolean isStackVisited(String chkuser)
     {
         /**
          * Verifica si el nodo de la pila ya fue visitado
@@ -211,7 +211,7 @@ public class Kosaraju
         return flag_visited;
     } 
 
-    public void markStackVisited(String chkuser)
+    private void markStackVisited(String chkuser)
     {
         /**
          * Marca el nodo en la pila como visitado
