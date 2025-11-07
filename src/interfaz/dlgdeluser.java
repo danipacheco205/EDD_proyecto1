@@ -36,7 +36,7 @@ public class dlgdeluser extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        btacept = new javax.swing.JButton();
+        btaccept = new javax.swing.JButton();
         btcancel = new javax.swing.JButton();
         deluser1 = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
@@ -62,16 +62,16 @@ public class dlgdeluser extends javax.swing.JDialog {
         jLabel4.setText("--Se eliminarán todas las relaciones que contenga este usuario--");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
-        btacept.setText("Aceptar");
-        btacept.setMaximumSize(new java.awt.Dimension(76, 29));
-        btacept.setMinimumSize(new java.awt.Dimension(76, 29));
-        btacept.setPreferredSize(new java.awt.Dimension(76, 29));
-        btacept.addActionListener(new java.awt.event.ActionListener() {
+        btaccept.setText("Aceptar");
+        btaccept.setMaximumSize(new java.awt.Dimension(76, 29));
+        btaccept.setMinimumSize(new java.awt.Dimension(76, 29));
+        btaccept.setPreferredSize(new java.awt.Dimension(76, 29));
+        btaccept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btaceptActionPerformed(evt);
+                btacceptActionPerformed(evt);
             }
         });
-        jPanel1.add(btacept, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 90, 30));
+        jPanel1.add(btaccept, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 90, 30));
 
         btcancel.setText("Cancelar");
         btcancel.setMaximumSize(new java.awt.Dimension(76, 29));
@@ -106,7 +106,7 @@ public class dlgdeluser extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btaceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btaceptActionPerformed
+    private void btacceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btacceptActionPerformed
         // TODO add your handling code here:
         String seluser = this.deluser1.getSelectedItem().toString();
         if (seluser.equals("--Seleccionar--"))
@@ -129,7 +129,7 @@ public class dlgdeluser extends javax.swing.JDialog {
                 Inicio.recordatorio();
             }
         }
-    }//GEN-LAST:event_btaceptActionPerformed
+    }//GEN-LAST:event_btacceptActionPerformed
 
     private void btcancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcancelActionPerformed
         // TODO add your handling code here:
@@ -191,7 +191,7 @@ public class dlgdeluser extends javax.swing.JDialog {
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btacept;
+    private javax.swing.JButton btaccept;
     private javax.swing.JButton btcancel;
     public javax.swing.JComboBox<String> deluser1;
     private javax.swing.JLabel jLabel1;

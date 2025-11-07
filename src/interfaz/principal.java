@@ -55,7 +55,7 @@ public class principal extends javax.swing.JFrame {
         txtrel = new javax.swing.JTextArea();
         addrel = new javax.swing.JButton();
         delrel = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        visualizegrafo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -165,15 +165,15 @@ public class principal extends javax.swing.JFrame {
         });
         jPanel1.add(delrel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(102, 255, 153));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setText("Ver grafo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        visualizegrafo.setBackground(new java.awt.Color(102, 255, 153));
+        visualizegrafo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        visualizegrafo.setText("Ver grafo");
+        visualizegrafo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                visualizegrafoActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, 120, 50));
+        jPanel1.add(visualizegrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, 120, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -263,14 +263,14 @@ public class principal extends javax.swing.JFrame {
         delrela.setVisible(true);
     }//GEN-LAST:event_delrelActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void visualizegrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizegrafoActionPerformed
         // TODO add your handling code here:
         System.setProperty("org.graphstream.ui", "swing"); /**Selecciona la librería gráfica swing usará GraphStream para mostrar el grafo*/
         GrafoDirigido graf = new GrafoDirigido();
         Inicio.kosara.getvalsKosaraju();
         
         graf.vergrafo();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_visualizegrafoActionPerformed
     
     /**
      * @param args the command line arguments
@@ -305,7 +305,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton bttcargar;
     private javax.swing.JButton delrel;
     private javax.swing.JButton deluser;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -316,5 +315,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel lblarchivosel;
     public javax.swing.JTextArea txtrel;
     public javax.swing.JTextArea txtusr;
+    private javax.swing.JButton visualizegrafo;
     // End of variables declaration//GEN-END:variables
 }

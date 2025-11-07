@@ -37,8 +37,8 @@ public class dlguser extends javax.swing.JDialog {
         dlgtext = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btaccept = new javax.swing.JButton();
+        btcancel = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
@@ -71,27 +71,27 @@ public class dlguser extends javax.swing.JDialog {
         jLabel5.setText(" -Se coloca automaticamente el nombre del usuario en minúsculas-");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 410, -1));
 
-        jButton2.setText("Aceptar");
-        jButton2.setMaximumSize(new java.awt.Dimension(76, 29));
-        jButton2.setMinimumSize(new java.awt.Dimension(76, 29));
-        jButton2.setPreferredSize(new java.awt.Dimension(76, 29));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btaccept.setText("Aceptar");
+        btaccept.setMaximumSize(new java.awt.Dimension(76, 29));
+        btaccept.setMinimumSize(new java.awt.Dimension(76, 29));
+        btaccept.setPreferredSize(new java.awt.Dimension(76, 29));
+        btaccept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btacceptActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 90, 30));
+        jPanel1.add(btaccept, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 90, 30));
 
-        jButton1.setText("Cancelar");
-        jButton1.setMaximumSize(new java.awt.Dimension(76, 29));
-        jButton1.setMinimumSize(new java.awt.Dimension(76, 29));
-        jButton1.setPreferredSize(new java.awt.Dimension(76, 29));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btcancel.setText("Cancelar");
+        btcancel.setMaximumSize(new java.awt.Dimension(76, 29));
+        btcancel.setMinimumSize(new java.awt.Dimension(76, 29));
+        btcancel.setPreferredSize(new java.awt.Dimension(76, 29));
+        btcancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btcancelActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 90, 30));
+        jPanel1.add(btcancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 90, 30));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("No debe incluir los siguientes caracteres: ( ; )  ( , ) ( \" ) ( ' )");
@@ -116,7 +116,7 @@ public class dlguser extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btacceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btacceptActionPerformed
         // TODO add your handling code here:
         String username = dlgtext.getText().toLowerCase();
         if (username.contains(",") || username.contains(";")|| username.contains("'")|| username.contains("\"") || username.trim().length() == 0)
@@ -146,12 +146,12 @@ public class dlguser extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null, "Debes colocar @ al inicio del nombre de usuario", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btacceptActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btcancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcancelActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btcancelActionPerformed
 
     private void dlgtextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgtextActionPerformed
         // TODO add your handling code here:
@@ -195,9 +195,9 @@ public class dlguser extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btaccept;
+    private javax.swing.JButton btcancel;
     private javax.swing.JTextField dlgtext;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;

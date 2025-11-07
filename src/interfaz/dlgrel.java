@@ -39,7 +39,7 @@ public class dlgrel extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        btacept = new javax.swing.JButton();
+        btaccept = new javax.swing.JButton();
         btcancel = new javax.swing.JButton();
         user1s = new javax.swing.JComboBox<>();
         user2s = new javax.swing.JComboBox<>();
@@ -78,16 +78,16 @@ public class dlgrel extends javax.swing.JDialog {
         jLabel6.setText("No puedes agregar una relación con el mismo usuario");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
-        btacept.setText("Aceptar");
-        btacept.setMaximumSize(new java.awt.Dimension(76, 29));
-        btacept.setMinimumSize(new java.awt.Dimension(76, 29));
-        btacept.setPreferredSize(new java.awt.Dimension(76, 29));
-        btacept.addActionListener(new java.awt.event.ActionListener() {
+        btaccept.setText("Aceptar");
+        btaccept.setMaximumSize(new java.awt.Dimension(76, 29));
+        btaccept.setMinimumSize(new java.awt.Dimension(76, 29));
+        btaccept.setPreferredSize(new java.awt.Dimension(76, 29));
+        btaccept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btaceptActionPerformed(evt);
+                btacceptActionPerformed(evt);
             }
         });
-        jPanel1.add(btacept, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 90, 30));
+        jPanel1.add(btaccept, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 90, 30));
 
         btcancel.setText("Cancelar");
         btcancel.setMaximumSize(new java.awt.Dimension(76, 29));
@@ -134,7 +134,7 @@ public class dlgrel extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btaceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btaceptActionPerformed
+    private void btacceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btacceptActionPerformed
         // TODO add your handling code here:
         String user1 = this.user1s.getSelectedItem().toString();
         String user2 = this.user2s.getSelectedItem().toString();
@@ -165,7 +165,7 @@ public class dlgrel extends javax.swing.JDialog {
                 }
             }
         }
-    }//GEN-LAST:event_btaceptActionPerformed
+    }//GEN-LAST:event_btacceptActionPerformed
 
     private void btcancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcancelActionPerformed
         // TODO add your handling code here:
@@ -245,7 +245,7 @@ public class dlgrel extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btacept;
+    private javax.swing.JButton btaccept;
     private javax.swing.JButton btcancel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
